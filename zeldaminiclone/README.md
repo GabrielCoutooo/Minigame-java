@@ -6,16 +6,42 @@ Pequeno jogo Java (clone/simplificação) com movimentação, inimigos e áudio.
 
 Este repositório contém um minigame em Java com a janela de jogo, sistema de câmera, inimigos e efeitos sonoros. O código usa o módulo `zeldaminiclone` (veja `module-info.java`) e carrega assets de áudio a partir de `/res/audio` (embutidos no classpath em `res/audio` / `bin/audio`).
 
+### Requisitos do Sistema
+
+- **Java 11 ou superior** (recomendado Java 23+)
+- **Sistema Operacional:** Windows, macOS ou Linux
+- **RAM:** 512 MB mínimo
+- **Áudio:** placa de som (opcional, mas recomendado para uma melhor experiência)
+
 ### Como executar
 
-Recomendo abrir o projeto em uma IDE (IntelliJ IDEA, Eclipse) e executar a classe `zeldaminiclone.Game` (método `main`).
+#### Opção 1: Executável JAR (Recomendado)
 
-Se preferir linha de comando (PowerShell), abaixo seguem instruções básicas para compilação e execução a partir da raiz do projeto (`caminho/para/zeldaminiclone`):
+Execute o arquivo `Game.jar` diretamente:
+
+```powershell
+java -jar Game.jar
+```
+
+**O que você precisa:**
+
+- Java 11+ instalado (testado com Java 23)
+- O arquivo `Game.jar` na raiz do projeto
+
+**Observação:** O JAR contém todos os arquivos de áudio embutidos, então não precisa de nenhuma configuração adicional. Basta clicar ou executar o comando acima.
+
+#### IDE (IntelliJ IDEA, Eclipse)
+
+Abra o projeto em uma IDE e execute a classe `zeldaminiclone.Game` (método `main`).
+
+#### Linha de comando - Compilação Manual
+
+Se preferir compilar e rodar a partir da raiz do projeto:
 
 1. Compilar as fontes (cria a pasta `out`):
 
 ```powershell
-javac -d out src\module-info.java src\zeldaminiclone\zeldaminiclone\*.java
+javac -d out src\module-info.java src\zeldaminiclone\*.java
 ```
 
 2. Executar o módulo:
@@ -24,11 +50,11 @@ javac -d out src\module-info.java src\zeldaminiclone\zeldaminiclone\*.java
 java --module-path out -m zeldaminiclone/zeldaminiclone.Game
 ```
 
-Observações:
+**Observações:**
 
-- A compilação acima assume que todos os arquivos `.java` estão em `src\zeldaminiclone\zeldaminiclone` e que há um `module-info.java` em `src`.
-- Pode ser necessário ajustar caminhos conforme sua IDE ou estrutura local.
-- Se preferir usar o classpath tradicional, você também pode compilar com `javac -d out src\zeldaminiclone\zeldaminiclone\*.java` e rodar com `java -cp out zeldaminiclone.Game` (mas com `module-info.java` presente, a execução por módulo é a abordagem recomendada).
+- Certifique-se de que Java está no PATH do sistema
+- A compilação assume que os arquivos `.java` estão em `src\zeldaminiclone\`
+- Para usar classpath tradicional: `javac -d out src\zeldaminiclone\*.java` e rodar com `java -cp out zeldaminiclone.Game`
 
 ### Arquivos de áudio encontrados
 
@@ -43,6 +69,17 @@ Os arquivos de áudio inclusos no projeto (localizados em `res/audio` e copiados
 - `playerAttack.wav` (som da bola de fogo do player)
 
 No código, os caminhos usados pelo `AudioManager` são strings como `/audio/gameplayMusic.wav` e `/audio/gameOverLost.wav` (veja `src/zeldaminiclone/AudioManager.java`).
+
+### Controles do jogo
+
+- **W** - Mover para cima
+- **A** - Mover para esquerda
+- **S** - Mover para baixo
+- **D** - Mover para direita
+- **Mouse (Clique esquerdo)** - Atirar
+- **Alt + Enter** - Ativar/desativar modo fullscreen
+- **R** - Reiniciar (após game over)
+- **Esc** - Voltar ao menu (após game over)
 
 ### Créditos de áudio
 
